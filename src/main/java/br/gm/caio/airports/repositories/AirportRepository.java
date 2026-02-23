@@ -17,4 +17,6 @@ public interface AirportRepository extends JpaRepository<Airport, Long> {
     // Este método buscará pela coluna 'city' ignorando maiúsculas/minúsculas
     List<Airport> findByCityIgnoreCase(String city);
     List<Airport> findByCountryIgnoreCase(String Country);
+    
+    Airport findByIataCode(String iataCode);
 }
