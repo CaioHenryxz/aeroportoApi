@@ -21,9 +21,11 @@ public class AirportService {
     private AirportRepository airportRepository;
     
     public List<Airport> findAll() {
-        List<Airport> result = airportRepository.findAll();
-        return result;
-        
+        return airportRepository.findAll();
     }
     
+    // Corrigido de findByCty para findByCity
+    public List<Airport> findByCity(String city) {
+        return airportRepository.findByCityIgnoreCase(city);
+    }
 }

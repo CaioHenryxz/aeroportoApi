@@ -5,6 +5,7 @@
 package br.gm.caio.airports.repositories;
 
 import br.gm.caio.airports.entities.Airport;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface AirportRepository extends JpaRepository<Airport, Long> {
     
-    
+    // Este método buscará pela coluna 'city' ignorando maiúsculas/minúsculas
+    List<Airport> findByCityIgnoreCase(String city);
 }
