@@ -4,6 +4,7 @@
  */
 package br.gm.caio.airports.service;
 
+import br.gm.caio.airports.DTO.AirportMinDTO;
 import br.gm.caio.airports.entities.Airport;
 import br.gm.caio.airports.repositories.AirportRepository;
 import java.util.List;
@@ -27,5 +28,12 @@ public class AirportService {
     // Corrigido de findByCty para findByCity
     public List<Airport> findByCity(String city) {
         return airportRepository.findByCityIgnoreCase(city);
+    }
+    
+    public List<AirportMinDTO> findByCountry(String country) {
+        List<Airport> resultAirport = airportRepository.findByCountryIgnoreCase(country);
+        
+        List<AirportMinDTO> resultDTO = resultAirport.stream().map(x -> new AirportMinDTO(x)).toList();
+        return resultDTO;
     }
 }
